@@ -1,0 +1,30 @@
+<template>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered" border="1" cellspacing="0" cellpadding="0" bordercolor="#ccc" style="border-collapse:collapse;">
+         <thead>
+             <tr>
+                 <th>Select</th>
+                 <th>Name</th>
+                 <th>Industry</th>
+                 <template if:true={contacttab}>
+                    <th>Contacts Count</th>
+                 </template>
+                 <template if:true={opstab}>
+                    <th>Opportunity Count</th> 
+                 </template>
+             </tr>
+         </thead>
+          <template for:each={accData.data} for:item="accItem">
+              <tr key={accItem.Id}>
+                  <td><lightning-input type="radio" name="radioButtonSelect" value={accItem.Id} onchange={handleChangeRadio}></lightning-input></td>
+                  <td>{accItem.Name}</td>
+                  <td>{accItem.Industry}</td>
+                  <template if:true={contacttab}>
+                    <td>{accItem.Contact_Count__c}</td> 
+                  </template>
+                  <template if:true={opstab}>
+                    <td>{accItem.Opportunity_Count__c}</td> 
+                  </template>
+              </tr>
+          </template>
+    </table> 
+</template>

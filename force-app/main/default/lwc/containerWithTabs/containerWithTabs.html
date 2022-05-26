@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-bottom--medium">
+            <c-account-data-table onmyeventdemo={handleChangeAction} contacttab={currentContactTab} opstab={currentOpsTab}></c-account-data-table>
+        </div>
+        <lightning-tabset>
+            <lightning-tab label="Contacts" onactive={handleContactTab}>
+                    <template for:each={records} for:item='conItem'>
+                        <p key={conItem.Id}>
+                            {conItem.FirstName} {conItem.LastName}
+                        </p>
+                     </template>
+            </lightning-tab>
+            <lightning-tab label="Opportunities" onactive={handleOpsTab}>
+                     <template for:each={oppRecords} for:item='oppItem'>
+                        <p key={oppItem.Id}>
+                            {oppItem.Name}
+                        </p>
+                     </template>
+            </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+</template>
